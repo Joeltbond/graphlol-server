@@ -1,5 +1,5 @@
 import { mountGraphQL } from './graphql'
-import { createApp } from './server'
+import { createApp, listen } from './server'
 
 const schema = {
   Query: {
@@ -16,4 +16,4 @@ const schema = {
 
 const app = createApp()
 mountGraphQL(app, schema)
-app.listen(3000)
+listen(app, 3000)

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>GraphLoL Playground</title>
+    <style>
+      html,
+      body {
+        font-size: 10px;
+        margin: 0;
+        padding: 0;
+        font-family: 'Futura', sans-serif;
+      }
+
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+
+      body {
+        padding: 1.6rem;
+      }
+
+      h1 {
+        font-size: 3.6rem;
+      }
+
+      .query-editor {
+        font-size: 2.4rem;
+        font-family: 'Courier New', Courier, monospace;
+        height: 20rem;
+        width: 100%;
+      }
+
+      .submit-button {
+        appearance: none;
+        padding: 1.2rem;
+        font-size: 2.4rem;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>GraphLoL Playground</h1>
+
+    <textarea class="query-editor">
+{
+  viewer {
+    id
+  }
+}</textarea
+    >
+    <button id="submitButton" class="submit-button">Submit</button>
+  </body>
+
+  <script>
+    const submit = document.getElementById('submitButton')
+
+    submit.addEventListener('click', async function () {
+      const res = await fetch('/graphql', {
+        method: 'POST',
+        body: JSON.stringify('post test'),
+      })
+
+      const body = await res.json()
+      console.log(body.currentUser)
+    })
+  </script>
+</html>
